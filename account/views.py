@@ -1,81 +1,42 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from .forms import UserForm
-from django.views.generic import View
+from django.contrib.auth import authenticate, login, logout,get_user_model
+from .forms import UserLoginForm, UserRegisterForm
+
+
 
 def home(request):
+    print(4545)
     return render(request, 'Homepage.html')
 
-def register(request):
-    form = UserForm(request.POST or None)
+def register_view(request):
+    title= "Register"
+    form = UserRegisterForm(request.POST or None)
+    print('hello')
     if form.is_valid():
         user = form.save(commit=False)
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password']
+        password = form.cleaned_data.get('password')
         user.set_password(password)
         user.save()
+        new_user = authenticate(username=user.username, password=password)
+        login(request, new_user)
+        return redirect('<h1> OK </h1>')
+    return render(request, 'account/registration.html', {"form": form})
+
+
+def logout_view(request):
+    logout(request)
+    return render(request, 'account/Login.html', {"form": form})
+
+
+def login_view(request):
+    title = "Login"
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                albums = Album.objects.filter(user=request.user)
-                return render(request, 'Homepage.html')
-    context = {
-        "form": form,
-    }
-    return render(request, 'Homepage.html', context)
+        login(request, user)
+        print(request.user.is_authenticate)
 
-
-
-def login_user(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                albums = Album.objects.filter(user=request.user)
-                # redirect the user when he is logged in
-                return render(request, 'account/Login.html', {'albums': albums})
-            else:
-                return render(request, 'account/Login.html', {'error_message': 'Your account has been disabled'})
-        else:
-            return render(request, 'account/Login.html', {'error_message': 'Invalid login'})
-    return render(request, 'account/Login.html')
-
-
-
-class UserFormView(View):
-    form_class = UserForm
-    template_name = 'account/registration.html'
-
-    #display a blank form
-    def get(self,request):
-        form=self.form_class(None)
-        return render(request, self.template_name)
-
-    #process form data
-    def post(self,request):
-        form = self.form_class(request.POST)
-
-        if form.is_valid():
-            user = form.save(commit=False)
-
-            # normalize the data (data formatted properly)
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user.set_password(password)
-            user.save()
-
-            #authenticate
-            user = authenticate(user=username,password=password)
-            if user is not None:
-                login(request,user)
-                # return to something should be dashboard
-                return redirect('#')
-        # If wrong info we redirect here
-        return redirect('#')
-
-
+    return render(request, 'account/Login.html',{"form":form})
 

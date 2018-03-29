@@ -2,14 +2,14 @@
 <html>
 <body>
 
-<h2>Registert</h2>
+<h2>Registrt</h2>
 
 
 <form form class="form-horizontal" role="form" action="{% url 'account:login_user'%}" method="post" enctype="multipart/form-data" autocomplete="on">
     {% csrf_token %}
 
-  Username:<input type="text" name="Uname"><br>
-  Password:<input type="password" name="psw"><br>
+  Username:<input type="text" name="username"><br>
+  Password:<input type="password" name="password"><br>
     <input type="submit">
 
 </form>

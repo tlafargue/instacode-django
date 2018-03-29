@@ -2,16 +2,16 @@
 <html>
 <body>
 
-<h2>Registert</h2>
+<h2>Registet</h2>
 
 
-<form role="form" action="" method="post" enctype="multipart/form-data" autocomplete="on">
+<form role="form" action="" method="POST" enctype="multipart/form-data" autocomplete="on">
     {% csrf_token %}
 
-  Username:<input type="text" name="Uname"><br>
-  Password:<input type="password" name="psw"><br>
+  Username:<input type="text" name="username"><br>
+  Password:<input type="password" name="password"><br>
   E-mail: <input type="email" name="email" autocomplete="off"><br>
-  <input type="submit">
+  <button type="submit">submit</button>
 
 </form>
 
