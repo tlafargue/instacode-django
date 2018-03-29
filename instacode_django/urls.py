@@ -19,6 +19,9 @@ from django.urls import path
 from account import views
 
 urlpatterns = [
+    #/admin
     url(r'^admin/', admin.site.urls),
-    path('', views.home, name='home')
+    #Nothing
+    path('', views.home, name='home'),
+    url(r'^account/', include('account.urls'))
 ]
