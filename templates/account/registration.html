@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Registet</h2>
+
+
+<form role="form" action="" method="POST" enctype="multipart/form-data" autocomplete="on">
+    {% csrf_token %}
+
+  Username:<input type="text" name="username"><br>
+  Password:<input type="password" name="password"><br>
+  E-mail: <input type="email" name="email" autocomplete="off"><br>
+  <button type="submit">submit</button>
+
+</form>
+
+</body>
+</html>
