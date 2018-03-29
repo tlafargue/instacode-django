@@ -19,11 +19,13 @@ def register(request):
             if user.is_active:
                 login(request, user)
                 albums = Album.objects.filter(user=request.user)
-                return render(request, 'account/registration.html')
+                return render(request, 'Homepage.html')
     context = {
         "form": form,
     }
-    return render(request, 'account/registration.html', context)
+    return render(request, 'Homepage.html', context)
+
+
 
 def login_user(request):
     if request.method == "POST":

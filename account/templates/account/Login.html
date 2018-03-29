@@ -5,7 +5,8 @@
 <h2>Registert</h2>
 
 
-<form action="/action_page.php" autocomplete="on">
+<form form class="form-horizontal" role="form" action="{% url 'account:login_user'%}" method="post" enctype="multipart/form-data" autocomplete="on">
+    {% csrf_token %}
 
   Username:<input type="text" name="Uname"><br>
   Password:<input type="password" name="psw"><br>
