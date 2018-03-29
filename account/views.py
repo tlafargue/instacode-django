@@ -3,6 +3,10 @@ from django.contrib.auth import authenticate, login
 from .forms import UserForm
 from django.views.generic import View
 
+def home(request):
+
+    return render(request, 'Homepage.html')
+
 class UserFormView(View):
     form_class = UserForm
     template_name = 'account/registration.html'
@@ -10,7 +14,7 @@ class UserFormView(View):
     #display a blank form
     def get(self,request):
         form=self.form_class(None)
-        return render(request, self.template_name, {'form':form})
+        return render(request, self.template_name)
 
     #process form data
     def post(self,request):
