@@ -23,6 +23,11 @@ def mention(request):
 def avantage(request):
     return render(request, 'Avantage_python.html')
 
+def profile(request,username):
+    person = user = request.user
+    context ={'user': person}
+    return render(request, 'account/Profile.html',context)
+
 def register_view(request):
     title= "Register"
     form = UserRegisterForm(request.POST or None)

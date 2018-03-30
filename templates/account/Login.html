@@ -3,11 +3,11 @@
 <body>
 
 <h1><a href="{% url 'home' %}">Go home</a> </h1>
-
 <h2>Login</h2>
 
 
 <form form class="form-horizontal" role="form" action="" method="POST"  autocomplete="on">
+
     {% csrf_token %}
 
   Username:<input type="text" name='username'><br>

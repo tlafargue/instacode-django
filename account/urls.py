@@ -4,5 +4,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    #/account/register
+    #/account/username
+    url(r'^(?P<username>\w+)/$', views.profile, name='profile'),
+
 ]

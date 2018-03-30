@@ -34,4 +34,5 @@ urlpatterns = [
     url(r'^outils/', views.outils, name='outils'),
     url(r'^avantage/', views.avantage, name='avantage'),
     url(r'^mentions/', views.mention, name='mentions'),
+    url(r'^account/', include('account.urls'))
 ]
