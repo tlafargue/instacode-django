@@ -8,6 +8,9 @@ from .forms import UserLoginForm, UserRegisterForm
 def home(request):
     return render(request, 'instacode.html')
 
+def nav(request):
+    return render(request, 'test.html')
+
 def cestquoi(request):
     return render(request, 'quoi.html')
 
