@@ -6,8 +6,19 @@ from .forms import UserLoginForm, UserRegisterForm
 
 
 def home(request):
-    print(4545)
-    return render(request, 'Homepage.html')
+    return render(request, 'instacode.html')
+
+def cestquoi(request):
+    return render(request, 'quoi.html')
+
+def outils(request):
+    return render(request, 'outils.html')
+
+def mention(request):
+    return render(request, 'mentions_legales.html')
+
+def avantage(request):
+    return render(request, 'Avantage_python.html')
 
 def register_view(request):
     title= "Register"
@@ -25,7 +36,7 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, 'Homepage.html')
+    return render(request, 'instacode.html')
 
 
 def login_view(request):
