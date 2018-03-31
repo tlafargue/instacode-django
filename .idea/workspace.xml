@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b18a7d3-6835-4a4c-8ff0-e56b4992ade3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cours/templates/account/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/cours/templates/account/Login.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,8 +80,26 @@
       <file leaf-file-name="Login.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cours/templates/account/Login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Comptes.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cours/templates/account/Comptes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Blueprint_offline_user.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cours/templates/Blueprint_offline_user.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -145,6 +163,7 @@
         <option value="$PROJECT_DIR$/account/admin.py" />
         <option value="$PROJECT_DIR$/cours/admin.py" />
         <option value="$PROJECT_DIR$/cours/models.py" />
+        <option value="$PROJECT_DIR$/cours/templates/account/Login.html" />
       </list>
     </option>
   </component>
@@ -171,46 +190,6 @@
             <path>
               <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
               <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="cours" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="cours" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="cours" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="cours" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="instacode-django" type="b2602c69:ProjectViewProjectNode" />
-              <item name="instacode-django" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,7 +266,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" auto_hide="true" id="Event Log" order="12" sideWeight="0.0734375" side_tool="true" weight="0.29077253" />
@@ -477,20 +455,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/account/Blueprint account.html" />
-    <entry file="file://$PROJECT_DIR$/cours/templates/account/Comptes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cours/templates/Blueprint_offline_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="104" column="30" selection-end-line="117" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
@@ -512,13 +476,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cours/templates/account/Dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -591,10 +548,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cours/templates/Blueprint_offline_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="95" column="12" lean-forward="true" selection-start-line="95" selection-start-column="12" selection-end-line="95" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cours/templates/account/Comptes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cours/templates/account/Dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cours/templates/account/Login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
