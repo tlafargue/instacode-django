@@ -23,14 +23,14 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^account/', include('account.urls')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^avantage/', views.avantage, name='avantage'),
+    url(r'^dashboard/', views.dashboard, name='dashboard'),
     url(r'^login/', login_view ,name='login'),
     url(r'^logout/', logout_view ,name='logout'),
-    url(r'^register/', register_view ,name='register'),
-    url(r'^quoi/', views.cestquoi, name='quoi'),
-    url(r'^outils/', views.outils, name='outils'),
-    url(r'^avantage/', views.avantage, name='avantage'),
     url(r'^mentions/', views.mention, name='mentions'),
-    url(r'^dashboard/', views.dashboard, name='dashboard'),
-    url(r'^account/', include('account.urls')),
+    url(r'^outils/', views.outils, name='outils'),
+    url(r'^quoi/', views.cestquoi, name='quoi'),    
+    url(r'^register/', register_view ,name='register'),
     path('', TemplateView.as_view(template_name='instacode.html'), name='home'),
 ]
