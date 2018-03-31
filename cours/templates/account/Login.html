@@ -1,25 +1,39 @@
-<<<<<<< HEAD:cours/templates/account/Login.html
 {% extends "account/Blueprint_account.html" %}
 {% block body %}
-=======
-{% extends "base.html" %}
-{% block content %}
->>>>>>> f4c0fb504e5c9d8bb9012e51b268069fd12021e7:templates/account/Login.html
 
-<h1>You are logged in</h1>
-
-<a href={% url 'logout' %}>Logout</a>
-
-<h2>Login</h2>
-
-
-<form form class="form-horizontal" role="form" action="" method="POST"  autocomplete="on">
-    {% csrf_token %}
-
-  Username:<input type="text" name='username'><br>
-  Password:<input type="password" name="password"><br>
-    <input type="submit">
-
-</form>
+    <section class="fdb-block" style="background-image: url(./imgs/bg_4.svg)">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 text-left">
+          <div class="fdb-box">
+              <form role="form" action="" method="POST"  autocomplete="on">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col">
+                <h1>Connecte toi</h1>
+                <p class="text-h3">Saisis ton email et ton mot de passe pour accéder aux cours InstaCode.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col mt-4">
+                <input type="text" class="form-control" placeholder="Email">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <input type="password" class="form-control" placeholder="Mot de passe">
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col">
+                <button class="btn" type="button">Connexion</button>
+              </div>
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}

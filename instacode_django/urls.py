@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^avantage/', views.avantage, name='avantage'),
     url(r'^mentions/', views.mention, name='mentions'),
     url(r'^dashboard/', views.dashboard, name='dashboard'),
-    url(r'^account/', include('account.urls'))
+    url(r'^account/', include('account.urls')),
+    path('', TemplateView.as_view(template_name='instacode.html'), name='home'),
 ]
