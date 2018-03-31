@@ -1,0 +1,14 @@
+{% extends 'account/Blueprint_account.html' %}
+{% load static %}
+
+{% block account %}
+
+<h1>This is your your dashboard</h1>
+<h3><a href="/account/{{ user.username }}">Your profile</a> </h3>
+
+<a href={% url 'logout' %}>Logout</a>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% load static %}
+<head>
+  <title>Apprends à coder gratuitement - Instacode</title>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+  <meta name="google-site-verification" content="SEDiu_WboxglR0LeWnSBLiPjfDdB_9Vnri476a8D0uU" />
+  <meta charset="UTF-8">
+
+  <link rel="icon" type="image/png" href="{% static 'css/favicon-32x32.png' %}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{% static 'favicon-16x16.png' %}" sizes="16x16" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/froala_blocks.css' %}">
+
+  <style>
+  .logo {
+    color: #FFF;
+    font-family: 'Comfortaa', sans-serif;
+  }
+
+  .logo:hover {
+    color: #6a3c87;
+    text-decoration: none;
+  }
+  </style>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113786812-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113786812-1');
+</script>
+  <!-- Start of Async Drift Code -->
+<script>
+!function() {
+  var t;
+  if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+  t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
+  t.factory = function(e) {
+    return function() {
+      var n;
+      return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+    };
+  }, t.methods.forEach(function(e) {
+    t[e] = t.factory(e);
+  }), t.load = function(t) {
+    var e, n, o, i;
+    e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+    o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
+    n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+  });
+}();
+drift.SNIPPET_VERSION = '0.3.1';
+drift.load('47eb4bbbdgd8');
+</script>
+<!-- End of Async Drift Code -->
+</head>
+<body>
+  <header class="bg-color">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-md">
+        <a href="{% url 'home' %}" class="logo mt-2">
+          <h3>InstaCode</h3>
+        </a>
+          <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' user.username %}">{{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Tableau de bord</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Comptes</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+
+  {% block account %}
+  {% endblock %}
+
+
+  <footer class="fdb-block footer-small">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col">
+          <p>&copy; 2018 InstaCode | <a href="{% url 'mentions' %}">Mentions Légales</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+</body>
+</html>
