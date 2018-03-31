@@ -22,10 +22,6 @@ from account.views import login_view, logout_view, register_view
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    #/admin
-    url(r'^admin/', admin.site.urls),
-    #Nothing
-    path('', views.home, name='home'),
     url(r'^account/', include('account.urls')),
     url(r'^login/', login_view ,name='login'),
     url(r'^logout/', logout_view ,name='logout'),
