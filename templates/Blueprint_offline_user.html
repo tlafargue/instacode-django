@@ -67,6 +67,14 @@ drift.load('47eb4bbbdgd8');
         </a>
           <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile' user.username %}">{{ user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'quoi' %}">C'est quoi InstaCode ?</a>
             </li>
@@ -80,8 +88,9 @@ drift.load('47eb4bbbdgd8');
               <a class="nav-link" href="{% url 'register' %}">Inscription</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
             </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
