@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout, get_user_model
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserRegisterForm
-from django.contrib.auth.decorators import login_required
 
 def avantage(request):
     return render(request, 'Avantage_python.html')
@@ -18,8 +18,10 @@ def dashboard(request):
 def login_view(request):
     title = "Login"
     form = UserLoginForm(request.POST or None)
+    print(form.is_valid)
     if form.is_valid():
-        username = form.cleaned_data['username']
+        email = request.POST['email']
+        username = User.objects.get(email=email.lower()).username
         password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
         login(request, user)

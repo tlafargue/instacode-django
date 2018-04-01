@@ -4,14 +4,15 @@ from django.contrib.auth.models import User
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField()
+    email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
     def clean(self,*arg, **kwargs):
-        username = self.cleaned_data.get('username')
+        emai = self.cleaned_data.get('email')
+        userss = User.objects.get(email=emai.lower()).username
         password = self.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        if username and password:
+        user = authenticate(username=userss, password=password)
+        if userss and password:
             if not user:
                 raise forms.ValidationError('This user doesnt exist')
             if not user.check_password(password):
