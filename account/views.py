@@ -58,7 +58,7 @@ def register_view(request):
         user.save()
         new_user = authenticate(username=user.username, password=password)
         login(request, new_user)
-        return redirect('account/Loggedin.html')
+        return redirect('account/Dashboard.html')
     return render(request, 'account/registration.html', {"form": form})
 
 
