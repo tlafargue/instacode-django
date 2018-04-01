@@ -1,0 +1,27 @@
+{% extends 'account/Blueprint_account.html' %}
+{% load static %}
+
+{% block account %}
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col col-md-8 text-center">
+          <div class="text-left"><a href="{% url 'dashboard' %}">Espace Cours 📄</a></div>
+          <h1>{{ cours }}</h1>
+          <p class="text-h3">Tu es sur le point de suivre ton premier cours de programmation, voici quelques indications avant de commencer :</p>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="560" height="315" src="{{ cours.video }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <br>
+            <p>{{ cours.text }}</p>
+          <div class="text-left">
+          {% for ex in cours.exercice_set.all %}
+              <p class="text-h3"><b>{{ ex.Nom_exo }}</b><pre>{{ ex.Enonce }}</pre></p><br>
+{% endfor %}
+</div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

@@ -12,9 +12,6 @@ def cestquoi(request):
 def home(request):
     return render(request, 'instacode.html')
 
-def dashboard(request):
-    return render(request, 'account/Dashboard.html')
-
 def login_view(request):
     title = "Login"
     form = UserLoginForm(request.POST or None)

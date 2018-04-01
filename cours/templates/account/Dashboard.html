@@ -3,12 +3,27 @@
 
 {% block account %}
 
-<h1>This is your your dashboard</h1>
-<h3><a href="/account/{{ user.username }}">Your profile</a> </h3>
-
-<a href={% url 'logout' %}>Logout</a>
-
-</body>
-</html>
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col col-md-8 text-center">
+          <h1>Cours InstaCode</h1>
+          <p class="text-h3">Bienvenue dans l'espace de cours InstaCode {{ user.username }} ! C'est ici que tu apprendras les bases de la programmation en Python pour écrire tes premiers programmes. Tout d'abord je te conseille de sauvegarder cette page dans tes favoris, elle sera mise à jour chaque semaine avec un nouveau cours.</p>
+          <br>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/7rieM3uI84Y" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+          </div>
+          <br><br><br>
+          <div class="text-left">
+            <ol> Liste des cours
+                {% for c in cours %}
+                <li><a href='{% url 'cours:topic' c.url %}'>{{ c.topic }}</a> </li>
+                {% endfor %}
+            </ol>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}
