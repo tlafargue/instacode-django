@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inscris toi !{% endblock %}
+
+{% block content %}
+
+    <section class="fdb-block">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Inscris toi !</h1>
+                            <p class="text-h3">Crée ton compte pour accéder à tous les cours InstaCode. </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Pseudo" name="username">
+                        </div>
+                        <div class="col">
+                            <input type="email" class="form-control" placeholder="Email" name="email">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <input type="password" class="form-control" placeholder="Mot de passe" name="password">
+                        </div>
+                        <div class="col">
+                            <input type="password" class="form-control" placeholder="Confirmer mot de passe" name="confirm-password">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Prénom" name="name">
+                        </div>
+                        <div class="col">
+                            <input type="email" class="form-control" placeholder="Ville" name="city">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+
+                        </div>
+                        <div class="col">
+                            <input type="date" class="form-control" name="dob">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                    I Read and Accept <a href="https://www.froala.com">Terms and Conditions</a>
+                                </label>
+                            </div>
+
+                            <button class="btn mt-4">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'Blueprint_offline_user.html' %}
+{% load static %}
+
+{% block body %}
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col col-md-8 text-center">
+          <h1>Python</h1>
+          <p class="text-h3">Python est un language de programmation avec une syntaxe simple et lisible. Il est utilisé par des grandes entreprises comme Google et même des agences gouvernementales comme la NASA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 col-lg-5">
+          <h1>Simplicité</h1>
+          <p class="text-h3">Python gagne en popularité depuis 15 ans. C'est maintenant le premier language informatique utilisé pour l'initiation à la programmation dans les universités. En effet sa simplicité permets d'écrire moins de code et de se concentrer sur les concepts importants de la programmation.</p>
+        </div>
+        <div class="col-12 col-md-6 ml-md-auto mt-4 mt-md-0">
+          <img alt="image" class="img-fluid" src="{% static '/imgs/python_vs_java_frame.png' %}">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 mr-md-auto mt-4 mt-md-0">
+          <img alt="image" class="img-fluid" src="{% static '/imgs/git_tree.svg' %}">
+        </div>
+        <div class="col-12 col-md-6 col-lg-5">
+          <h1>Modules</h1>
+          <p class="text-h3">L'installation de base de Python comprends un grand nombre de modules qui accélèrent le développement. Si tu ne trouves pas le module qu'il te faut parmis ceux qui sont installés par défaut, tu peux choisir parmis les 22 000 000 de modules installables avec pip.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 col-lg-5">
+          <h1>Django</h1>
+          <p class="text-h3">Le développement web est LE secteur important du moment. Effectivement le web évolue et de plus en plus d'applications sont développés pour être utiliser dans le navigateur. Django, un framework web en Python, est utilisé par des sites comme Pinterest pour sa simplicité et sa puissance.</p>
+        </div>
+        <div class="col-12 col-md-6 ml-md-auto mt-4 mt-md-0">
+          <img alt="image" class="img-fluid" src="{% static '/imgs/django_frame.png' %}">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 text-center">
+          <p class="text-h3">
+            Apprends à coder en Python, le language le plus simple pour s'initier à la programmation. InstaCode c'est gratuit, 100% en ligne et ouvert à tous.
+          </p>
+
+          <p class="mt-5 mt-sm-4">
+            <a class="btn" href="{% url 'register' %}">Coder Maintenant</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

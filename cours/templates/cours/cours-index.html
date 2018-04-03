@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Espace Cours{% endblock %}
+
+{% block content %}
+
+    <section class="fdb-block">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-md-8 text-center">
+                    <h1>{{ cours.titre }}</h1>
+                    <p class="text-h3">Bienvenue dans l'espace de cours InstaCode {{ user.username }} ! C'est ici que tu apprendras les bases de la programmation en Python pour écrire tes premiers programmes.</p>
+                    <br>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7rieM3uI84Y" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+                    </div>
+                    <br><br><br>
+                    <div class="text-left">
+                        {% for cours in cours.all %}
+                        <h2>{{ cours.titre }}</h2>
+                        <ol>
+                            {% for chapitre in cours.chapitre_set.all %}
+                                {% if chapitre.is_pub %}
+                                    <a href='{% url 'cours:chapitre-detail' cours.id chapitre.slug %}'><li>{{ chapitre.titre }}</li></a>
+                                {% else %}
+                                    <li>{{ chapitre.titre }} - {{ chapitre.date_pub|date:"j F Y" }}</li>
+                                {%  endif %}
+                            {% endfor %}
+                        </ol>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

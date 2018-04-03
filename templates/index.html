@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Apprends à coder gratuitement - Instacode{% endblock %}
+
+{% block content %}
+  <section class="fdb-block">
+    <div class="container align-items-center justify-content-center d-flex">
+      <div class="row align-items-center text-left">
+        <div class="col-12 col-sm-6">
+          <img class="img-fluid" src="{% static '/imgs/instacode.gif' %}">
+        </div>
+
+        <div class="col-12 col-lg-5 ml-auto pt-5 pt-lg-0">
+          <h1>Apprends à Coder Gratuitement</h1>
+          <p class="text-h3">Commence à coder en 2 minutes avec InstaCode.</p>
+          <p class="mt-4"><a href="/inscription" class="btn">Coder Maintenant</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col col-md-8 text-center">
+          <p class="text-h3">InstaCode est un programme d'initiation à la programmation qui propose une formation alternative aux parcours traditionnels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-12">
+          <h1>Avec InstaCode, tu apprendras :</h1>
+        </div>
+      </div>
+
+      <div class="row text-center justify-content-center mt-5">
+        <div class="col-12 col-sm-4 col-xl-3 m-md-auto">
+          <img alt="image" class="fdb-icon" src="{% static 'imgs/console.png' %}">
+          <h3><strong>Fondamentaux</strong></h3>
+          <p>Un bon développeur a des bases solides qui lui permettent de produire du code lisible de haute qualité.</p>
+        </div>
+
+        <div class="col-12 col-sm-4 col-xl-3 m-auto pt-4 pt-sm-0">
+          <img alt="image" class="fdb-icon" src="{% static 'imgs/git.png' %}">
+          <h3><strong>Outils</strong></h3>
+          <p>git, GitHub, Trello ... tu apprendras à maitriser ces outils insdispensables pour collaborer avec d’autres développeurs.</p>
+        </div>
+
+        <div class="col-12 col-sm-4 col-xl-3 m-auto pt-4 pt-sm-0">
+          <img alt="image" class="fdb-icon" src="{% static 'imgs/python.png' %}">
+          <h3><strong>Python</strong></h3>
+          <p>Le meilleur langage pour apprendre la programmation, la syntaxe est simple et les experts en Python sont très demandés</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block" style="background-image: url({% static 'imgs/bg_4.svg)' %}">
+    <div class="container">
+      <div class="fdb-box">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-10 col-sm-6 col-md-4 col-lg-3 col-xl-2 m-auto">
+            <img alt="image" class="img-fluid rounded-circle" src="{% static 'imgs/portrait.jpg' %}"/>
+          </div>
+
+          <div class="col-12 col-md-8 ml-auto mr-auto mt-4 mt-md-0">
+            <p class="text-h3">
+              InstaCode c’est le site que j’aurais aimé trouver il y a 5 ans, quand j’ai commencé la programmation.
+            </p>
+
+            <p class="text-h3 mt-4 mt-lg-5"><strong>Thibault Lafargue</strong></p>
+            <p><em>Créateur d'InstaCode</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fdb-block">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 text-center">
+          <p class="text-h3">
+            220 000 emplois supplementaires seront disponibles dans le domaine de l’informatique d’ici 2022 selon le rapport de France Strategie de 2012
+          </p>
+
+          <p class="mt-5 mt-sm-4">
+            <a class="btn" href="/inscription">Coder Maintenant</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
