@@ -1,7 +1,7 @@
-{% extends 'Blueprint_offline_user.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block body %}
+{% block content %}
 
 
   <section class="fdb-block">
@@ -66,7 +66,7 @@
           </p>
 
           <p class="mt-5 mt-sm-4">
-            <a class="btn" href="{% url 'register' %}">Coder Maintenant</a>
+            {% include 'cta.html' %}
           </p>
         </div>
       </div>

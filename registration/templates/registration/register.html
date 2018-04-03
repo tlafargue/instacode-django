@@ -11,55 +11,65 @@
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                     <div class="row">
                         <div class="col text-center">
-                            <h1>Inscris toi !</h1>
-                            <p class="text-h3">Crée ton compte pour accéder à tous les cours InstaCode. </p>
+                            <h1>Inscris toi pour commencer à coder 💻</h1>
+                            <p class="text-h3">Tu pourras accéder à l'espace cours immédiatement 🚀</p>
                         </div>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Pseudo" name="username">
-                        </div>
-                        <div class="col">
-                            <input type="email" class="form-control" placeholder="Email" name="email">
-                        </div>
-                    </div>
-                    <div class="row align-items-center mt-4">
-                        <div class="col">
-                            <input type="password" class="form-control" placeholder="Mot de passe" name="password">
-                        </div>
-                        <div class="col">
-                            <input type="password" class="form-control" placeholder="Confirmer mot de passe" name="confirm-password">
-                        </div>
-                    </div>
-                    <div class="row align-items-center mt-4">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Prénom" name="name">
-                        </div>
-                        <div class="col">
-                            <input type="email" class="form-control" placeholder="Ville" name="city">
-                        </div>
-                    </div>
-                    <div class="row align-items-center mt-4">
-                        <div class="col">
-
-                        </div>
-                        <div class="col">
-                            <input type="date" class="form-control" name="dob">
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-start mt-4">
-                        <div class="col">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input">
-                                    I Read and Accept <a href="https://www.froala.com">Terms and Conditions</a>
-                                </label>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Pseudo" name="username">
                             </div>
-
-                            <button class="btn mt-4">Submit</button>
+                            <div class="col">
+                                <input type="email" class="form-control" placeholder="Email" name="email">
+                            </div>
                         </div>
-                    </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                <input type="password" class="form-control" placeholder="Mot de passe" name="password1">
+                            </div>
+                            <div class="col">
+                                <input type="password" class="form-control" placeholder="Confirmer mot de passe" name="password2">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Prénom" name="name">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Ville" name="city">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col mt-2">
+                                <label>Date de naissance : </label>
+                            </div>
+                            <div class="col">
+                                <input type="date" class="form-control" name="dob">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mt-4">
+                            <div class="col mt-2">
+                                <label>Je suis intéressé(e) par InstaCode</label>
+                            </div>
+                            <div class="col">
+                                <select class="form-control" name="interest">
+                                    <option>par curiosité</option>
+                                    <option>pour créer une application web/mobile</option>
+                                    <option>pour renouveler mes compétences</option>
+                                    <option>pour devenir développeur</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-start mt-4">
+                            <div class="col text-center">
+                                <input class="btn mt-4" type="submit">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

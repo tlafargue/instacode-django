@@ -1,7 +1,7 @@
-{% extends 'Blueprint_offline_user.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block body %}
+{% block content %}
 
   <section class="fdb-block">
     <div class="container">
@@ -61,11 +61,11 @@
       <div class="row justify-content-center">
         <div class="col-12 col-md-8 text-center">
           <p class="text-h3">
-            Inscris toi pour être notifié au lancement de la première version d'InstaCode.
+            Inscris toi pour apprendre la programmation avec InstaCode.
           </p>
 
           <p class="mt-5 mt-sm-4">
-            <a class="btn" href="{% url 'register' %}">S'inscrire</a>
+            {% include 'cta.html' %}
           </p>
         </div>
       </div>

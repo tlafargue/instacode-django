@@ -1,0 +1,32 @@
+<script>
+    var tag = document.createElement('script');
+    tag.src = "http://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('player', {
+            height: '315',
+            width: '560',
+            videoId: '{{ video_id }}',
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.PLAYING) {
+            gtag('event', 'Play', {
+                'event_category': 'Videos',
+                'event_label': '{{ video_name }}'
+            });
+        }
+        if (event.data === YT.PlayerState.ENDED){
+            gtag('event', 'Watch to end', {
+                'event_category': 'Videos',
+                'event_label': '{{ video_name }}'
+            });
+        }}
+</script>

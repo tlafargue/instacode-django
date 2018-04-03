@@ -6,10 +6,11 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 
+from tinymce.models import HTMLField
 
 class Cours(models.Model):
     titre = models.CharField(max_length=100)
-    description = models.TextField()
+    description = HTMLField()
 
     date_pub = models.DateTimeField('date publié')
 
@@ -27,8 +28,8 @@ class Cours(models.Model):
 class Chapitre(models.Model):
     cours = models.ForeignKey(Cours, on_delete=models.CASCADE)
     titre = models.CharField(max_length=100)
-    videoId = models.CharField(max_length=11)
-    intro = models.TextField()
+    video_id = models.CharField(max_length=11)
+    intro = HTMLField()
 
     slug = models.SlugField(unique=True, blank=True)
     date_pub = models.DateTimeField('date publié')
@@ -49,7 +50,7 @@ class Chapitre(models.Model):
 class Exercice(models.Model):
     chapitre = models.ForeignKey(Chapitre, on_delete=models.CASCADE)
     titre = models.CharField(max_length=100)
-    probleme = models.TextField()
+    probleme = HTMLField()
     reponse = models.TextField()
 
     def __str__(self):

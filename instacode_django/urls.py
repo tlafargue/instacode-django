@@ -25,5 +25,6 @@ urlpatterns = [
     path('cest-quoi/', TemplateView.as_view(template_name='cest-quoi.html'), name='cest-quoi'),
     path('cours/', include('cours.urls')),
     path('mentions-legales/', TemplateView.as_view(template_name='mentions-legales.html'), name='mentions-legales'),
-    path('outils-developpement', TemplateView.as_view(template_name='outils.html'), name='outils-developpement'),
+    path('outils-developpement/', TemplateView.as_view(template_name='outils.html'), name='outils-developpement'),
+    path('tinymce/', include('tinymce.urls')),
 ]
