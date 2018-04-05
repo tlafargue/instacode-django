@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }} - InstaCode{% endblock %}
+
+{% block content %}
+    {{ user.profile.birth_date }}
+    <br>
+    {{ user.profile.city }}
+    <br>
+    {{ user.first_name }}
+    <br>
+    {% for exercice in profile.solved_exercices %}
+    <p>{{ exercice.titre }}</p>
+    {% endfor %}
+{% endblock %}

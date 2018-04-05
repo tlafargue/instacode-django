@@ -24,6 +24,7 @@
             text-decoration: none;
         }
     </style>
+    {% if not debug %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113786812-1"></script>
     <script>
@@ -57,31 +58,32 @@
         drift.load('47eb4bbbdgd8');
     </script>
     <!-- End of Async Drift Code -->
+    {% endif %}
 </head>
 <body>
 <header class="bg-color">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-md">
-            <a href="/" class="logo mt-2">
+            <a href="{% url 'home' %}" class="logo mt-2">
                 <h3>InstaCode</h3>
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/cest-quoi">C'est quoi InstaCode ?</a>
+                        <a class="nav-link" href="{% url 'cest-quoi' %}">C'est quoi InstaCode ?</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/profile">{{ user.username }}</a>
+                            <a class="nav-link" href="{% url 'cours:profile-detail' user.username %}">{{ user.username }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/logout">Se déconnecter</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Se déconnecter</a>
                             {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Se connecter</a>
+                            <a class="nav-link" href="{% url 'login' %}">Se connecter</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/register">S'inscrire</a>
+                            <a class="nav-link" href="{% url 'register' %}">S'inscrire</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -96,7 +98,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col">
-                <p>&copy; 2018 InstaCode | <a href="/mentions-legales">Mentions Légales</a></p>
+                <p>&copy; 2018 InstaCode | <a href="{% url 'mentions-legales' %}">Mentions Légales</a></p>
             </div>
         </div>
     </div>

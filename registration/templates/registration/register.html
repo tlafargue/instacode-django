@@ -19,10 +19,10 @@
                         {% csrf_token %}
                         <div class="row align-items-center">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Pseudo" name="username">
+                                <input type="text" class="form-control" placeholder="Prénom" name="first_name">
                             </div>
                             <div class="col">
-                                <input type="email" class="form-control" placeholder="Email" name="email">
+                                <input type="text" class="form-control" placeholder="Pseudo" name="username">
                             </div>
                         </div>
                         <div class="row align-items-center mt-4">
@@ -35,18 +35,7 @@
                         </div>
                         <div class="row align-items-center mt-4">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Prénom" name="name">
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Ville" name="city">
-                            </div>
-                        </div>
-                        <div class="row align-items-center mt-4">
-                            <div class="col mt-2">
-                                <label>Date de naissance : </label>
-                            </div>
-                            <div class="col">
-                                <input type="date" class="form-control" name="dob">
+                                <input type="email" class="form-control" placeholder="Email" name="email">
                             </div>
                         </div>
 
@@ -64,6 +53,11 @@
                             </div>
                         </div>
 
+                        {% if form.errors %}
+                            <div class="row justify-content-start mt-4">
+                                <p>{{ form.errors }}</p>
+                            </div>
+                        {% endif %}
                         <div class="row justify-content-start mt-4">
                             <div class="col text-center">
                                 <input class="btn mt-4" type="submit">

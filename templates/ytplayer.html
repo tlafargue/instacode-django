@@ -17,16 +17,20 @@
     }
 
     function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.PLAYING) {
-            gtag('event', 'Play', {
-                'event_category': 'Videos',
-                'event_label': '{{ video_name }}'
-            });
-        }
-        if (event.data === YT.PlayerState.ENDED){
-            gtag('event', 'Watch to end', {
-                'event_category': 'Videos',
-                'event_label': '{{ video_name }}'
-            });
-        }}
+        {% if not debug %}
+            if (event.data === YT.PlayerState.PLAYING) {
+                gtag('event', 'Play', {
+                    'event_category': 'Videos',
+                    'event_label': '{{ video_name }}'
+                });
+            }
+            if (event.data === YT.PlayerState.ENDED){
+                gtag('event', 'Watch to end', {
+                    'event_category': 'Videos',
+                    'event_label': '{{ video_name }}'
+                });
+            }
+        {% endif %}
+    }
+
 </script>

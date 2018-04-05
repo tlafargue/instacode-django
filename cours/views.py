@@ -1,8 +1,9 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from django.views import generic
 from django.utils import timezone
 
-from .models import Cours, Chapitre, Exercice
+from .models import Cours, Chapitre
 
 # Create your views here.
 
@@ -23,3 +24,11 @@ class ChapitreDetailView(generic.DetailView):
 
     def get_queryset(self):
         return Chapitre.objects.filter(cours=self.kwargs['cours']).filter(date_pub__lte=timezone.now())
+
+
+class ProfileDetailView(generic.DetailView):
+    model = User
+    template_name = 'profile.html'
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(User, username=self.kwargs['username'])

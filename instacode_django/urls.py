@@ -19,11 +19,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    path('', include('cours.urls')),
     path('', include('registration.urls')),
     path('admin/', admin.site.urls, name='admin'),
-    path('avantages-python/', TemplateView.as_view(template_name='python.html'), 'avantages-python'),
+    path('avantages-python/', TemplateView.as_view(template_name='python.html'), name='avantages-python'),
     path('cest-quoi/', TemplateView.as_view(template_name='cest-quoi.html'), name='cest-quoi'),
-    path('cours/', include('cours.urls')),
     path('mentions-legales/', TemplateView.as_view(template_name='mentions-legales.html'), name='mentions-legales'),
     path('outils-developpement/', TemplateView.as_view(template_name='outils.html'), name='outils-developpement'),
     path('tinymce/', include('tinymce.urls')),
