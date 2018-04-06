@@ -243,7 +243,8 @@ header + header {
   color: #444444; }
 
 .bg-color {
-  background-color: #9053B7; }
+  background-color: #9053B7;
+  color: #FFFFFF; }
 
 .br {
   border-radius: 4px;

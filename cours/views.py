@@ -32,3 +32,11 @@ class ProfileDetailView(generic.DetailView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(User, username=self.kwargs['username'])
+
+
+class LeaderboardView(generic.ListView):
+    template_name = 'leaderboard.html'
+    context_object_name = 'user_list'
+
+    def get_queryset(self):
+        return User.objects.order_by('-profile__points')

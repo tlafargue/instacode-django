@@ -65,6 +65,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True)
     solved_exercices = models.ManyToManyField(Exercice)
+    points = models.IntegerField(default=0)
     image = models.ImageField(upload_to='profile_image', blank=True)
     interest = models.CharField(max_length=30)
 

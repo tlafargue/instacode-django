@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Classement{% endblock %}
+
+{% block content %}
+    <section class="fdb-block">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-md-8 text-center">
+                    <h1>Classement</h1>
+                    <div class="text-left">
+                        <table class="table table-hover">
+                            <thead class="bg-color">
+                            <th scope="col">#</th>
+                            <th scope="col">Pseudo</th>
+                            <th scope="col">Points</th>
+                            </thead>
+                            {% for user in user_list %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td><a href="{% url 'cours:profile-detail' user.username %}">{{ user.username }}</a></td>
+                                <td>{{ user.profile.points }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+

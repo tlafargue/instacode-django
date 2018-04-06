@@ -10,6 +10,7 @@
     <br>
     {{ user.first_name }}
     <br>
+    <img src="{{ user.profile.image.url }}">
     {% for exercice in profile.solved_exercices %}
     <p>{{ exercice.titre }}</p>
     {% endfor %}
