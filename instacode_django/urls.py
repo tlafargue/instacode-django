@@ -24,6 +24,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('', include('cours.urls')),
     path('', include('registration.urls')),
+    path('forum/', include('forum.urls')),
     path('admin/', admin.site.urls, name='admin'),
     path('avantages-python/', TemplateView.as_view(template_name='python.html'), name='avantages-python'),
     path('cest-quoi/', TemplateView.as_view(template_name='cest-quoi.html'), name='cest-quoi'),

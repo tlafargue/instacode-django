@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}forum{% endblock %}
+
+{% block content %}
+
+    <form role="search" method="get" action="">
+       <div class="form-group">
+           <input class="form-control" placeholder="Search for author, title, word in description" type="text"  name="q" value="{{ request.GET.q }}">
+       </div>
+      <button class="btn btn-default" type="submit">Search</button>
+    </form>
+
+
+<p><a href="{% url "forum:forum-index" %}">HOME</a></p>
+<!-- Forums  -->
+<table border="0" cellpadding="4" width="100%">
+    {% for forum in forums %}
+        {% if forum.categorie == "Forum1" %}
+        <tr>
+            <td>{{ forum.categorie }}</td>
+            <td>Posts</td>
+            <td>Last post</td>
+            <td></td>
+        </tr>
+            <tr>
+
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a href="{% url 'forum:forum-detail' forum.pk %}">{{ forum.title }}</a>
+                <td {% if forloop.last %}class="last"{% endif %}>{{ forum.num_posts }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    {{ forum.last_post.short|linebreaksbr }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a class="button" href="{% url 'forum:forum-detail' forum.pk %}">VIEW</a>
+                </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    {% for forum in forums %}
+        {% if forum.categorie == "Archive" %}
+        <tr>
+            <td>{{ forum.categorie }}</td>
+            <td>Posts</td>
+            <td>Last post</td>
+            <td></td>
+        </tr>
+            <tr>
+
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a href="{% url 'forum:forum-detail' forum.pk %}">{{ forum.title }}</a>
+                <td {% if forloop.last %}class="last"{% endif %}>{{ forum.num_posts }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    {{ forum.last_post.short|linebreaksbr }}</td>
+                <td {% if forloop.last %}class="last"{% endif %}>
+                    <a class="button" href="{% url 'forum:forum-detail' forum.pk %}">VIEW</a>
+                </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}
