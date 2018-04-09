@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import Forum, Topic, Post, ProfaneWord
 
 class ForumAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["title", "categorie", "creator", "created"]
+    list_filter = ["title", "creator"]
 
 class TopicAdmin(admin.ModelAdmin):
     list_display = ["title", "forum", "creator", "created"]

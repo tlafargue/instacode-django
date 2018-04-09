@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+
 {% block title %}{{ chapitre.titre }}{% endblock %}
 
 {% block content %}
-
     <section class="fdb-block">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,13 +20,57 @@
                     </div>
                     <br>
                     <div class="text-left">
-                        {% for exercice in chapitre.exercice_set.all %}
-                            <p class="text-h3"><b>{{ exercice.titre }}</b></p>{{ exercice.probleme |safe }}<br>
-                        {% endfor %}
+<form method="POST" action="">
+        {% csrf_token %}
+       {% for exercice in chapitre.exercice_set.all %}
+             <p class="text-h3"><b>{{ exercice.titre }}</b></p>{{ exercice.probleme |safe }}<br>
+           {% for question in exercice.question_set.all %}
+               <p>{{ question.question }}</p><br>
+               {% if question.is_multiplechoice %}
+                   <p>Attention, il y a plusieurs reponses a cette question</p>
+               {% for choice in question.choice_set.all %}
+                   <input type="checkbox" name="{{ choice.id }}" value="{{ choice.id }}"> {{ choice.proposition }}<br>
+                   {% for answer in answers %}
+                   {% if answer.show_answer == True %}
+                           {% if answer.choice.id == choice.id %}
+                               {% if answer.answer == choice.goodanswer and answer.answer == True %}
+                                    <p>Correct</p>
+                               {% endif %}
+                               {% if answer.answer != choice.goodanswer and answer.answer == True %}
+                                    <p>Wrong</p>
+                               {% endif %}
+                           {% endif %}
+                       {% endif %}
+               {% endfor %}
+               {% endfor %}
+               {% else %}
+               {% for choice in question.choice_set.all %}
+                   <input type="radio" name="{{ question.id }}" value="{{ choice.id }}"> {{ choice.proposition }}<br>
+                   {% for answer in answers %}
+                       {% if answer.show_answer == True %}
+                           {% if answer.choice.id == choice.id %}
+                               {% if answer.answer == choice.goodanswer and answer.answer == True %}
+                                    <p>Correct</p>
+                               {% endif %}
+                               {% if answer.answer != choice.goodanswer and answer.answer == True %}
+                                    <p>Wrong</p>
+                               {% endif %}
+                           {% endif %}
+                       {% endif %}
+               {% endfor %}
+               {% endfor %}
+               {% endif %}
+               {% endfor %}
+       {% endfor %}
+    <button type="submit">Submit your answers</button>
+</form>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <h3><a href="{% url 'cours:reset' chapitre.id %}">RESET</a></a></h3>
 
 {% endblock %}

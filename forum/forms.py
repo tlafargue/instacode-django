@@ -4,22 +4,6 @@ from .models import Topic, Post, ProfaneWord
 from .settings import *
 
 
-
-
-class TopicForm(forms.ModelForm):
-    title = forms.CharField(max_length=60, required=True)
-
-    class Meta():
-        model = Topic
-        fields = ['title','description']
-
-
-class UpdateTopicForm(forms.ModelForm):
-    class Meta():
-        model = Topic
-        fields = ['description']
-
-
 class PostForm(forms.ModelForm):
     class Meta():
         model = Post
@@ -37,4 +21,20 @@ class PostForm(forms.ModelForm):
                     reduce(lambda x, y: "%s,%s" % (x, y), bad_words)))
 
         return body
+
+class TopicForm(forms.ModelForm):
+    title = forms.CharField(max_length=60, required=True)
+
+    class Meta():
+        model = Topic
+        fields = ['title','description']
+
+
+class UpdateTopicForm(forms.ModelForm):
+    class Meta():
+        model = Topic
+        fields = ['description']
+
+
+
 

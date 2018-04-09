@@ -20,6 +20,9 @@ class Forum(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
     def num_posts(self):
         return sum([t.num_posts() for t in self.topic_set.all()])
 
@@ -41,6 +44,9 @@ class Topic(models.Model):
     creator = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
     closed = models.BooleanField(blank=True, default=False)
+
+    def __str__(self):
+        return self.title
 
     def num_posts(self):
         return self.post_set.count()
@@ -76,4 +82,7 @@ class ProfaneWord(models.Model):
     word = models.CharField(max_length=60)
 
     def __unicode__(self):
+        return self.word
+
+    def __str__(self):
         return self.word
