@@ -39,6 +39,9 @@
                                {% if answer.answer != choice.goodanswer and answer.answer == True %}
                                     <p>Wrong</p>
                                {% endif %}
+                               {% if choice.goodanswer == True and answer.answer == False %}
+                                   <p>That was one of the good answer</p>
+                                {% endif %}
                            {% endif %}
                        {% endif %}
                {% endfor %}
@@ -55,9 +58,12 @@
                                {% if answer.answer != choice.goodanswer and answer.answer == True %}
                                     <p>Wrong</p>
                                {% endif %}
-                           {% endif %}
+                               {% if choice.goodanswer == True and answer.answer == False %}
+                                   <p>That was the good answer</p>
+                                {% endif %}
+                               {% endif %}
                        {% endif %}
-               {% endfor %}
+                   {% endfor %}
                {% endfor %}
                {% endif %}
                {% endfor %}

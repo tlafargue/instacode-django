@@ -152,6 +152,7 @@ class TopicView(TemplateView):
 
 def update_post(request, topic_id, post_id):
     post = get_object_or_404(Post, pk=post_id)
+    topic =get_object_or_404(Topic, pk=topic_id)
     user = request.user
     if (user.id == post.creator.id) and (topic.closed==False):
         form = PostForm()

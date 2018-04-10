@@ -7,8 +7,6 @@ from django.views.generic import TemplateView
 
 from .models import Cours, Chapitre, Exercice, Question, Choice, Answer
 
-# Create your views here.
-
 
 class ChapitreDetailView(TemplateView):
     template_name = 'cours/chapitre-detail.html'
