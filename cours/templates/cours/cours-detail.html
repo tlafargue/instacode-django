@@ -20,7 +20,7 @@
                         <ol>
                             {% for chapitre in cours.chapitre_set.all %}
                                 {% if chapitre.is_pub %}
-                                    <a href='{% url 'cours:chapitre-detail' cours.id chapitre.slug %}'><li>{{ chapitre.titre }}</li></a>
+                                    <a href='{% url 'cours:chapitre-detail' cours.id chapitre.id %}'><li>{{ chapitre.titre }}</li></a>
                                 {% else %}
                                     <li>{{ chapitre.titre }} - {{ chapitre.date_pub|date:"j F Y" }}</li>
                                 {%  endif %}

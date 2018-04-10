@@ -1,0 +1,20 @@
+<form method="POST" action="">
+        {% csrf_token %}
+       {% for exercice in chapitre.exercice_set.all %}
+             <p class="text-h3"><b>{{ exercice.titre }}</b></p>{{ exercice.probleme |safe }}<br>
+           {% for question in exercice.question_set.all %}
+               <p>{{ question.question }}</p><br>
+               {% if question.is_multiplechoice %}
+                   <p>Attention, il y a plusieurs reponses a cette question</p>
+               {% for choice in question.choice_set.all %}
+                   <input type="checkbox" name="{{ question.id }}" value="{{ choice.id }}"> {{ choice.proposition }}<br>
+               {% endfor %}
+               {% else %}
+               {% for choice in question.choice_set.all %}
+                   <input type="radio" name="{{ question.id }}" value="{{ choice.id }}"> {{ choice.proposition }}<br>
+               {% endfor %}
+               {% endif %}
+       {% endfor %}
+    {% endfor %}
+    <button type="submit">Submit your answers</button>
+</form>

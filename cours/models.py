@@ -1,14 +1,9 @@
-from django.db import models
-
-# Create your models here.
-
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.text import slugify
-
 from tinymce.models import HTMLField
 
 class Cours(models.Model):
@@ -54,10 +49,11 @@ class Exercice(models.Model):
     chapitre = models.ForeignKey(Chapitre, on_delete=models.CASCADE)
     titre = models.CharField(max_length=100)
     probleme = HTMLField()
-    reponse = models.TextField()
 
     def __str__(self):
         return self.titre
+
+
 
 
 class Profile(models.Model):
@@ -68,6 +64,36 @@ class Profile(models.Model):
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to='profile_image', blank=True)
     interest = models.CharField(max_length=30)
+    def __str__(self):
+        return self.user
+
+
+
+class Question(models.Model):
+     exercice = models.ForeignKey(Exercice, on_delete=models.CASCADE)
+     question = models.CharField(max_length=100)
+     is_multiplechoice = models.BooleanField(default=False)
+     reponse = models.TextField()
+     def __str__(self):
+         return "Question " + str(self.id) + " to exercice "+ str(self.exercice)
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    goodanswer = models.BooleanField(default=False)
+    proposition = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "choice of question " + str(self.question)
+
+class Answer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice,on_delete=models.CASCADE)
+    answer = models.BooleanField(default=False)
+    show_answer = models.BooleanField(default=False)
+    def __str__(self):
+        return str(self.user) + "'s answer to proposition " + str(self.choice)
+
+
 
 
 @receiver(post_save, sender=User)
@@ -78,3 +104,11 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+
+@receiver(post_save, sender=Choice)
+def create_answer(sender, instance, created, **kwargs):
+    if created:
+        all_user = User.objects.all()
+        for user in all_user:
+            Answer.objects.create(choice=instance,user=User.objects.get(pk=user.id))

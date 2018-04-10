@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Post{% endblock %}
+
+{% block content %}
+    <section class="fdb-block" style="background-image: url({% static '/imgs/bg_4.svg' %})">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-8 text-center">
+                    <div class="fdb-box">
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                                    <p class="text-h2">Es-tu sur de vouloir recommencer les exercices de ce chapitre ?</p>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col">
+                                    <input class="btn" type="submit" value="Recommencer" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
