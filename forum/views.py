@@ -74,12 +74,17 @@ def index(request):
     queryset_list = Topic.objects.all()
     query = request.GET.get("q")
     if query:
-        user = User.objects.get(username=query)
-        topic = queryset_list.filter(
-            Q(description__icontains=query) |
-            Q(title__icontains=query) |
-            Q(creator=user.id)
-        ).distinct()
+
+        try:
+            user = User.objects.get(username=query)
+            topic = queryset_list.filter(Q(creator=user.id))
+            user = request.user
+        except:
+            user = request.user
+            topic = queryset_list.filter(
+                Q(description__icontains=query) |
+                Q(title__icontains=query)
+            ).distinct()
         context = {'topics': topic, 'user': user}
         return render(request, "forum/forumsearch.html", context)
     else:
@@ -131,6 +136,7 @@ class TopicView(FormView):
         topic = Topic.objects.get(pk=topic_id)
         forum = get_object_or_404(Forum, pk=topic.forum.id)
         user = request.user
+        print(posts.__dict__)
         context = {'forum':forum,'form':form,'posts':posts, 'topic':topic, 'user':user}
         return render(request, self.template_name, context)
     def post(self, request, topic_id):

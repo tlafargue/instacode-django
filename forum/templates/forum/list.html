@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-md-9"></div>
       <div class="col-md-3">
-      Welcome,
+      Bienvenue,
       <a href="#" class="underline">{{ user.username }}</a>
     </div>
   </div>
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-md-12">
 <ul class="breadcrumb">
-  <li><a href="#">Home</a></li>
+  <li><a href="#">Accueil</a></li>
   </li>
 </ul>
   </div>
@@ -45,10 +45,10 @@
       <div id="custom-search-input">
         <div class="row">
           <div class="col-md-9">
-            <input class="search-query form-control" placeholder="Search for topic text author" type="text" name="q" value="{{ request.GET.q }}">
+            <input class="search-query form-control" placeholder="Recherche un sujet, un auteur..." type="text" name="q" value="{{ request.GET.q }}">
             </div>
-          <div class="col-md-3" style="padding: 1px 0px">
-            <button class="btn" type="submit">Submit</button>
+          <div class="col-md-3" style="padding: 0px 0px 10px 5px">
+            <button class="btn" type="submit">Rechercher</button>
             </div>
 
             </div>
@@ -70,8 +70,8 @@
   <li class="list-group-item list-group-item-action flex-column align-items-start active">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="col-md-7">Forum1</h5>
-      <div class="col-md-2" align="center">Thread</div>
-      <div class="col-md-2" align="center">Freshness</div>
+      <div class="col-md-2" align="center">Sujets</div>
+      <div class="col-md-2" align="center">Dernier Sujet</div>
     </div>
   </li>
     {% for forum in forums %}
@@ -80,7 +80,7 @@
     <div class="d-flex w-80 justify-content-between" >
       <div  class="col-md-7" style="height: 20px; padding: 10px 0px 70px 0px;"><h5>{{ forum.title }}</h5>Description</div>
       <div class="col-md-2" align="center"><br>{{ forum.num_posts }}</div>
-      <div class="col-md-2" align="center">{{ forum.last_post.short|linebreaksbr }}</div>
+      <div class="col-md-2" style="height: 0px; padding: 14px 0px 0px 14px;" align="center">{{ forum.last_post.short|linebreaksbr }}</div>
     </div>
   </a>
             {% endif %}
@@ -102,8 +102,8 @@
   <li class="list-group-item list-group-item-action flex-column align-items-start active">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="col-md-7">Archive</h5>
-      <div class="col-md-2" align="center">Thread</div>
-      <div class="col-md-2" align="center">Freshness</div>
+      <div class="col-md-2" align="center">Sujets</div>
+      <div class="col-md-2" align="center">Dernier Sujet</div>
     </div>
   </li>
     {% for forum in forums %}
