@@ -9,7 +9,7 @@ app_name = 'forum'
 
 urlpatterns = [
     url(r'^$', login_required(views.index), name='forum-index'),
-    url(r'^(\d+)/$', login_required(views.forum), name='forum-detail'),
+    url(r'^(?P<forum_id>[0-9]+)/$', login_required(views.forum), name='forum-detail'),
     url(r'^topic/(\d+)/$', login_required(views.TopicView.as_view()), name='topic-detail'),
     url(r'^newtopic/(\d+)/$', login_required(views.new_topic), name='new-topic'),
     url(r'^updatetopic/(?P<topic_id>[0-9]+)/$', login_required(views.update_topic), name='update'),

@@ -6,48 +6,81 @@
 {% block content %}
 
 
-<p><a href="{% url "forum:forum-index" %}">HOME</a></p>
 
+<br>
 
-<!-- Threads  -->
-{% if forum.categorie != 'Archive' %}
-<a id="new_topic" class="button" href="{% url 'forum:new-topic' forum.id %}">Start New Topic</a>
-<br />
-<br />
-{% endif %}
-<div id="list">
-<table border="0" cellpadding="4" width="100%">
-    <tr>
-        <td>Topics</td>
-        <td>Replies</td>
-        <td>Last post</td>
-        <td></td>
-    </tr>
-    {% for topic in topics %}
-    <tr>
-        <td {% if forloop.last %}class="last"{% endif %}>
-        <div class="title"> <a href="{% url 'forum:topic-detail' topic.pk %}">{{ topic.title }}</a>
-            </div></td>
-        <td {% if forloop.last %}class="last"{% endif %}>{{ topic.num_replies }}</td>
-        <td {% if forloop.last %}class="last"{% endif %}>
-            {{ topic.last_post.short|linebreaksbr }}</td>
-        <td {% if forloop.last %}class="last"{% endif %}>
-        {% if forum.categorie == 'Archive' and user.is_superuser %}
-        <p><a href="{% url 'forum:delete' forum.id topic.pk %}">DELETE</a></p>
-        {% endif %}
-        {% if user.is_superuser or topic.creator.id == user.id %}
-        {% if forum.categorie != 'Archive'  %}
-        <p><a href="{% url 'forum:delete' forum.id topic.pk %}">DELETE</a></p>
-        {% endif %}
-        {% endif %}
-        {% if forum.categorie != 'Archive' and user.is_superuser %}
-        <p><a href="{% url 'forum:archive' topic.pk %}">ARCHIVE</a></p>
-        {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9"></div>
+      <div class="col-md-3">
+      Welcome,
+      <a href="#" class="underline">Thyakuza</a>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+<ul class="breadcrumb">
+  <li><a href="{% url "forum:forum-index" %}">Home</a></li>
+  <li>{{ forum.title }}</li>
+  </li>
+</ul>
+  </div>
 </div>
+  </div>
+
+<div class="container">
+<div class="row">
+         <div class="col-md-12 col-md-10 col-md-offset-1" >
+           <h2 align="center">{{ forum.title }}</h2>
+           <p align="center"><small>{{ forum.description }}</small></p>
+
+  </div>
+</div>
+</div>
+
+
+{% if topics %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12 col-md-8 col-md-offset-2">
+   <a href="{% url 'forum:new-topic' forum.id %}" align="left" class="btn center-block" type="submit">Start New Topic</button></a>
+  <br>
+  <br>
+    <ul class="list-group">
+  <div class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between" >
+      <h5 class="col-md-7">{{ forum.title }}</h5>
+      <div class="col-md-2" align="center">Post</div>
+      <div class="col-md-2" align="center">Freshness</div>
+    </div>
+  </div>
+  {% for topic in topics %}
+
+    <a href="{% url 'forum:topic-detail' topic.pk %}" class="list-group-item list-group-item-action flex-column align-items-start" >
+    <div class="d-flex w-100 justify-content-between" style="height: 0px; padding: 0px 0px 80px 0px;">
+      <h5 class="col-md-7"><br>{{ topic.title }}<br></h5>
+      <div class="col-md-2" align="center"><br>{{ topic.num_replies }}</div>
+      <div class="col-md-2" style="height: 0px; padding: 10px 0px 0px 14px;" align="center">{{ topic.last_post.short|linebreaksbr }}</div>
+    </div>
+  </a>
+  {% endfor %}
+  </ul>
+</div>
+  </div>
+</div>
+    {% else %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12 col-md-8 col-md-offset-2">
+   <a href="{% url 'forum:new-topic' forum.id %}" align="left" class="btn center-block" type="submit">Start New Topic</button></a>
+    </div>
+  </div>
+</div>
+    {% endif %}
+<br>
+<br>
+
 
 
 <!-- Next/Prev page links  -->
