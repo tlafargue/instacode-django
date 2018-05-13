@@ -1,0 +1,27 @@
+.fakeimg{
+  border-color: #6a3c87;
+  border-width: 4px;
+  border-style: solid;
+  border-radius:50%;
+}
+
+.categ{
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  color: #767676 !important;
+}
+
+.categ-ans{
+  font-weight: 400;
+  font-size: 15px;
+}
+
+th, td {
+    padding: 5px 0px 5px 15px !important;
+}
+
+.centered {
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
