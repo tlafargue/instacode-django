@@ -65,6 +65,8 @@ FORMATION = (('Doctorat', 'Doctorat'),
 
 CHOICES = [(i,i) for i in range(1900,2019)]
 
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nom_complet = models.CharField(max_length=30, blank=True)

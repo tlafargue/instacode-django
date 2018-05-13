@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 import locale
 
+
 CATEGORY = (('Forum1', 'Forum1'),
               ('Archive', 'archive'))
 
@@ -80,6 +81,7 @@ class Post(models.Model):
 
     def shorty(self):
         return self.created.strftime("%d %b")
+
 
     short.allow_tags = True
 

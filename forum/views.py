@@ -7,6 +7,7 @@ from .forms import TopicForm, PostForm, UpdateTopicForm
 from .settings import *
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic import TemplateView,FormView
+
 from django.db.models import Q
 from django.contrib.auth.models import User
 
@@ -85,6 +86,7 @@ def index(request):
                 Q(description__icontains=query) |
                 Q(title__icontains=query)
             ).distinct()
+
         context = {'topics': topic, 'user': user}
         return render(request, "forum/forumsearch.html", context)
     else:
@@ -136,13 +138,11 @@ class TopicView(FormView):
         topic = Topic.objects.get(pk=topic_id)
         forum = get_object_or_404(Forum, pk=topic.forum.id)
         user = request.user
-        print(posts.__dict__)
         context = {'forum':forum,'form':form,'posts':posts, 'topic':topic, 'user':user}
         return render(request, self.template_name, context)
     def post(self, request, topic_id):
         topic = Topic.objects.get(pk=topic_id)
         form = PostForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             post = Post()
             post.topic = topic
