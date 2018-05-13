@@ -4,14 +4,90 @@
 {% block title %}{{ user.username }} - InstaCode{% endblock %}
 
 {% block content %}
-    {{ user.profile.birth_date }}
+
     <br>
-    {{ user.profile.city }}
-    <br>
-    {{ user.first_name }}
-    <br>
-    <img src="{{ user.profile.image.url }}">
-    {% for exercice in profile.solved_exercices %}
-    <p>{{ exercice.titre }}</p>
-    {% endfor %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <h3>Mon profil</h3>
+        <p>Personnalise ton profil sur la plateforme Instacode</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+      <table class="table" style="background-color:white">
+        <tr>
+
+          <td><div class="centered">{% if user.profile.image != "" %}
+              <img class="fakeimg" src="{{ user.profile.image.url }}" alt="robot" width="150" height="150" hspace="20" vspace="15">
+            {% else %}
+              <img class="fakeimg" src="{% static '/imgs/InstaCode Robot.png' %}" alt="robot" width="150" height="150" hspace="20" vspace="15">
+              <p><a style="color:purple" href="#">Ajoute une photo de profil </a></p>
+            {% endif %}
+          </div>
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <h2>{{ user.username }}</h2>
+            <p>{% if user.profile.nom_complet != "" %}
+                {{ user.profile.nom_complet }}
+            {% else %}
+                <a style="color:purple" href="#">Ajoute ton Nom</a>
+            {% endif %}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="categ">Membre depuis</span><br>
+            <span class="categ-ans">{{ user.profile.created }}</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="categ">Pays</span><br>
+            <span class="categ-ans"><p>{% if user.profile.pays != "" %}
+                {{ user.profile.pays }}
+            {% else %}
+                <a style="color:purple" href="#">Ajoute ton Pays</a>
+            {% endif %}</p></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="categ">Ville</span><br>
+            <span class="categ-ans"><p>{% if user.profile.ville != "" %}
+                {{ user.profile.ville }}
+            {% else %}
+                <a style="color:purple" href="#">Ajoute ta ville</a>
+            {% endif %}</p></span>
+          </td>
+        </tr>
+      </table>
+      </div>
+      <div class="col-md-7">
+        <h4>A propos de moi</h4>
+        <p>{% if user.profile.a_propos != "" %}
+                {{ user.profile.a_propos }}
+            {% else %}
+                <a style="color:purple" href="#">Ajoute une Description</a>
+            {% endif %}</p>
+        <h4>Chapitre complété</h4>
+
+        <div class="list-group">
+            {% for elem in user.profile.solved_exercices.all %}
+                <a href="#" class="list-group-item list-group-item-action">{{ elem.titre }}</a>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 {% endblock %}
