@@ -2,11 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
-from multiselectfield import MultiSelectField
+import locale
 
 
 CATEGORY = (('Forum1', 'Forum1'),
               ('Archive', 'archive'))
+
+
+locale.setlocale(locale.LC_ALL, 'fr-CA')
 
 
 class Forum(models.Model):
@@ -73,7 +76,12 @@ class Post(models.Model):
         return u"%s - %s " % (self.creator, self.topic)
 
     def short(self):
-        return u"%s  \n%s" % (self.creator, self.created.strftime("%b %d, %I:%M %p"))
+        return u"%s  \n%s" % (self.topic, self.created.strftime("%d %b, %H:%M"))
+
+
+    def shorty(self):
+        return self.created.strftime("%d %b")
+
 
     short.allow_tags = True
 

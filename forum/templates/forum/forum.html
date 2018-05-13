@@ -6,69 +6,105 @@
 {% block content %}
 
 
-<p><a href="{% url "forum:forum-index" %}">HOME</a></p>
 
+<br>
 
-<!-- Threads  -->
-{% if forum.categorie != 'Archive' %}
-<a id="new_topic" class="button" href="{% url 'forum:new-topic' forum.id %}">Start New Topic</a>
-<br />
-<br />
-{% endif %}
-<div id="list">
-<table border="0" cellpadding="4" width="100%">
-    <tr>
-        <td>Topics</td>
-        <td>Replies</td>
-        <td>Last post</td>
-        <td></td>
-    </tr>
-    {% for topic in topics %}
-    <tr>
-        <td {% if forloop.last %}class="last"{% endif %}>
-        <div class="title"> <a href="{% url 'forum:topic-detail' topic.pk %}">{{ topic.title }}</a>
-            </div></td>
-        <td {% if forloop.last %}class="last"{% endif %}>{{ topic.num_replies }}</td>
-        <td {% if forloop.last %}class="last"{% endif %}>
-            {{ topic.last_post.short|linebreaksbr }}</td>
-        <td {% if forloop.last %}class="last"{% endif %}>
-        {% if forum.categorie == 'Archive' and user.is_superuser %}
-        <p><a href="{% url 'forum:delete' forum.id topic.pk %}">DELETE</a></p>
-        {% endif %}
-        {% if user.is_superuser or topic.creator.id == user.id %}
-        {% if forum.categorie != 'Archive'  %}
-        <p><a href="{% url 'forum:delete' forum.id topic.pk %}">DELETE</a></p>
-        {% endif %}
-        {% endif %}
-        {% if forum.categorie != 'Archive' and user.is_superuser %}
-        <p><a href="{% url 'forum:archive' topic.pk %}">ARCHIVE</a></p>
-        {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9"></div>
+      <div class="col-md-3">
+      Bienvenue,
+      <a href="#" class="underline">{{ user.username }}</a>
+    </div>
+  </div>
+  <br>
+    <div class="row">
+    <div class="col-md-12">
+<ul class="breadcrumb">
+  <li><a href="{% url "forum:forum-index" %}">Accueil</a></li>
+  <li>{{ forum.title }}</li>
+  </li>
+</ul>
+  </div>
+</div>
+  </div>
+
+<div class="container">
+<div class="row">
+         <div class="col-md-12 col-md-10 col-md-offset-1" >
+           <h2 align="center">{{ forum.title }}</h2>
+           <p align="center"><small>{{ forum.description }}</small></p>
+
+  </div>
+</div>
 </div>
 
 
-<!-- Next/Prev page links  -->
+{% if topics %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12 col-md-8 col-md-offset-2">
+   <a href="{% url 'forum:new-topic' forum.id %}" align="left" class="btn center-block" type="submit">Commencer un nouveau Sujet</button></a>
+  <br>
+  <br>
+    <ul class="list-group">
+  <div class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between" >
+      <h5 class="col-md-7">{{ forum.title }}</h5>
+      <div class="col-md-1" align="center">Réponses</div>
+      <div class="col-md-1" align="center">Auteur</div>
+      <div class="col-md-2" align="center">Dernière réponse</div>
+    </div>
+  </div>
+  {% for topic in topics %}
+
+    <a href="{% url 'forum:topic-detail' topic.pk %}" class="list-group-item list-group-item-action flex-column align-items-start" >
+    <div class="d-flex w-100 justify-content-between" style="height: 0px; padding: 0px 0px 80px 0px;">
+      <h5 class="col-md-7"><br>{{ topic.title }}<br></h5>
+      <div class="col-md-1" align="center"><br>{{ topic.num_replies }}</div>
+      <div class="col-md-1" align="center"><br>{{ topic.creator }}</div>
+      <div class="col-md-2" style="height: 0px; padding: 24px 0px 0px 14px;" align="center">{{ topic.last_post.shorty }}</div>
+    </div>
+  </a>
+  {% endfor %}
+  </ul>
+</div>
+  </div>
+</div>
+    {% else %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12 col-md-8 col-md-offset-2">
+   <a href="{% url 'forum:new-topic' forum.id %}" align="left" class="btn center-block" type="submit">Start New Topic</a>
+    </div>
+  </div>
+</div>
+    {% endif %}
+<br>
+<br>
 
 
-{% if topics.object_list and topics.paginator.num_pages > 1 %}
-<div class="pagination">
-    <span class="step-links">
+<div class="container">
+<div class="row text-center">
+<div class="col">
+<div class="btn-group btn-group-sm">
         {% if topics.has_previous %}
-            <a href= "?page={{ topics.previous_page_number }}">previous &lt;&lt; </a>
+            <a type="button" class="btn center-block" href= "?page={{ topics.previous_page_number }}">< Précédente</a>
         {% endif %}
 
         <span class="current">
-            &nbsp;Page {{ topics.number }} of {{ topics.paginator.num_pages }}
+            &nbsp;Page {{ topics.number }}&nbsp;
         </span>
 
         {% if topics.has_next %}
-            <a href="?page={{ topics.next_page_number }}"> &gt;&gt; next</a>
+            <a type="button" class="btn center-block" href="?page={{ topics.next_page_number }}"> Suivante ></a>
+
         {% endif %}
-    </span>
+        </div>
+
 </div>
-{% endif %}
+    </div>
+    </div>
+
 
 {% endblock %}

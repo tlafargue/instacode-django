@@ -5,31 +5,62 @@
 
 {% block content %}
 
-<p><a href="{% url "forum:forum-index" %}">HOME</a></p>
-<!-- Threads  -->
-<div id="list">
-<table border="0" cellpadding="4" width="100%">
-    <tr>
-        <td>Topics</td>
-        <td>Replies</td>
-        <td>Last post</td>
-        <td></td>
-    </tr>
-    {% for topic in topics %}
-    <tr>
-        <td {% if forloop.last %}class="last"{% endif %}>
-        <div class="title"> <a href="{% url 'forum:topic-detail' topic.pk %}">{{ topic.title }}</a>
-            </div></td>
-        <td {% if forloop.last %}class="last"{% endif %}>{{ topic.num_replies }}</td>
-        <td {% if forloop.last %}class="last"{% endif %}>
-            {{ topic.last_post.short|linebreaksbr }}</td>
-        <td {% if forloop.last %}class="last"{% endif %}>
-        </td>
-    </tr>
+<br>
+<br>
 
-    {% endfor %}
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9"></div>
+      <div class="col-md-3">
+      Welcome,
+      <a href="#" class="underline">{{ user.username }}</a>
+    </div>
+  </div>
+  <br>
+    <div class="row">
+    <div class="col-md-12">
+<ul class="breadcrumb">
+  <li><a href="{% url "forum:forum-index" %}">Home</a></li>
+</ul>
+  </div>
 </div>
+  </div>
+
+
+
+<!-- Threads  -->
+{% if topics %}
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12 col-md-8 col-md-offset-2">
+  <br>
+  <br>
+    <ul class="list-group">
+  <div class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between" >
+      <h5 class="col-md-7">{{ forum.title }}</h5>
+      <div class="col-md-1" align="center">Réponses</div>
+      <div class="col-md-1" align="center">Auteur</div>
+      <div class="col-md-2" align="center">Dernière réponse</div>
+    </div>
+  </div>
+  {% for topic in topics %}
+
+    <a href="{% url 'forum:topic-detail' topic.pk %}" class="list-group-item list-group-item-action flex-column align-items-start" >
+    <div class="d-flex w-100 justify-content-between" style="height: 0px; padding: 0px 0px 80px 0px;">
+      <h5 class="col-md-7"><br>{{ topic.title }}<br></h5>
+      <div class="col-md-1" align="center"><br>{{ topic.num_replies }}</div>
+      <div class="col-md-1" align="center"><br>{{ topic.creator }}</div>
+      <div class="col-md-2" style="height: 0px; padding: 24px 0px 0px 14px;" align="center">{{ topic.last_post.shorty|linebreaksbr }}</div>
+    </div>
+  </a>
+  {% endfor %}
+  </ul>
+</div>
+  </div>
+</div>
+    {% endif %}
+
 
 <!-- Next/Prev page links  -->
 {% if topics.object_list and topics.paginator.num_pages > 1 %}

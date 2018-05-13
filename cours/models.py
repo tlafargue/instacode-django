@@ -53,19 +53,34 @@ class Exercice(models.Model):
     def __str__(self):
         return self.titre
 
+FORMATION = (('Doctorat', 'Doctorat'),
+              ('Master', 'Master'),
+             ('Diplome de 1er cycle', 'Diplome de 1er cycle'),
+             ('Lycée', 'Lycée'),
+             ('Collège', 'Collège'),
+             ('Enseignement Primaire', 'Enseignement Primaire'),
+             ('Education non formelle', 'Education non formelle'),
+             ('Autre Education', 'Autre Education'))
+
+
+CHOICES = [(i,i) for i in range(1900,2019)]
 
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nom_complet = models.CharField(max_length=30, blank=True)
+    langue = models.CharField(max_length=30, blank=True)
+    a_propos = models.TextField(max_length=10000, blank=True, null=True)
     city = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True)
+    year_date = models.CharField(max_length=60,choices=CHOICES, blank=True, null=True)
+    niveau_de_formation = models.CharField(max_length=60,choices=FORMATION, blank=True, null=True)
     solved_exercices = models.ManyToManyField(Exercice)
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to='profile_image', blank=True)
     interest = models.CharField(max_length=30)
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 

@@ -6,7 +6,8 @@ from .models import Forum, Topic, Post
 from .forms import TopicForm, PostForm, UpdateTopicForm
 from .settings import *
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,FormView
+
 from django.db.models import Q
 from django.contrib.auth.models import User
 
@@ -74,12 +75,18 @@ def index(request):
     queryset_list = Topic.objects.all()
     query = request.GET.get("q")
     if query:
-        user = User.objects.get(username=query)
-        topic = queryset_list.filter(
-            Q(description__icontains=query) |
-            Q(title__icontains=query) |
-            Q(creator=user.id)
-        ).distinct()
+
+        try:
+            user = User.objects.get(username=query)
+            topic = queryset_list.filter(Q(creator=user.id))
+            user = request.user
+        except:
+            user = request.user
+            topic = queryset_list.filter(
+                Q(description__icontains=query) |
+                Q(title__icontains=query)
+            ).distinct()
+
         context = {'topics': topic, 'user': user}
         return render(request, "forum/forumsearch.html", context)
     else:
@@ -122,14 +129,13 @@ def new_topic(request, forum_id):
 
 
 
-class TopicView(TemplateView):
+class TopicView(FormView):
     template_name = 'forum/topic.html'
     def get(self, request, topic_id):
         form = PostForm()
         posts = Post.objects.filter(topic=topic_id).order_by("created")
         posts = mk_paginator(request, posts, DJANGO_SIMPLE_FORUM_REPLIES_PER_PAGE)
         topic = Topic.objects.get(pk=topic_id)
-        print (topic.forum)
         forum = get_object_or_404(Forum, pk=topic.forum.id)
         user = request.user
         context = {'forum':forum,'form':form,'posts':posts, 'topic':topic, 'user':user}
