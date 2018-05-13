@@ -65,6 +65,10 @@ FORMATION = (('Doctorat', 'Doctorat'),
 
 CHOICES = [(i,i) for i in range(1900,2019)]
 
+GENDER = (('Homme', 'Homme'),
+              ('Femme', 'Femme'),
+             ('Autre', 'Autre'))
+
 
 
 class Profile(models.Model):
@@ -75,8 +79,10 @@ class Profile(models.Model):
     city = models.CharField(max_length=30, blank=True)
     year_date = models.CharField(max_length=60,choices=CHOICES, blank=True, null=True)
     niveau_de_formation = models.CharField(max_length=60,choices=FORMATION, blank=True, null=True)
+    gender = models.CharField(max_length=60,choices=GENDER, blank=True, null=True)
     solved_exercices = models.ManyToManyField(Exercice)
     points = models.IntegerField(default=0)
+    created = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='profile_image', blank=True)
     interest = models.CharField(max_length=30)
     def __str__(self):
