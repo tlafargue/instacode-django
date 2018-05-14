@@ -53,7 +53,8 @@ class Exercice(models.Model):
     def __str__(self):
         return self.titre
 
-FORMATION = (('Doctorat', 'Doctorat'),
+FORMATION = (('blank', ' '),
+            ('Doctorat', 'Doctorat'),
               ('Master', 'Master'),
              ('Diplome de 1er cycle', 'Diplome de 1er cycle'),
              ('Lycée', 'Lycée'),
@@ -62,10 +63,8 @@ FORMATION = (('Doctorat', 'Doctorat'),
              ('Education non formelle', 'Education non formelle'),
              ('Autre Education', 'Autre Education'))
 
-
-CHOICES = [(i,i) for i in range(1900,2019)]
-
-GENDER = (('Homme', 'Homme'),
+GENDER = (('blank', ' '),
+            ('Homme', 'Homme'),
               ('Femme', 'Femme'),
              ('Autre', 'Autre'))
 
@@ -78,10 +77,10 @@ class Profile(models.Model):
     a_propos = models.TextField(max_length=10000, blank=True, null=True)
     ville = models.CharField(max_length=30, blank=True)
     pays = models.CharField(max_length=30, blank=True)
-    year_date = models.IntegerField(max_length=60,choices=CHOICES, blank=True, null=True)
+    birth_date = models.DateField(auto_now=False, blank=True, null=True)
     niveau_de_formation = models.CharField(max_length=60,choices=FORMATION, blank=True, null=True)
     gender = models.CharField(max_length=60,choices=GENDER, blank=True, null=True)
-    solved_exercices = models.ManyToManyField(Exercice, blank=True, null=True)
+    solved_exercices = models.ManyToManyField(Exercice, blank=True)
     points = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='profile_image', blank=True)

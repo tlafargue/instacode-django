@@ -6,9 +6,9 @@
 }
 
 .categ{
-  font-weight: 400 !important;
-  font-size: 18px !important;
-  color: #767676 !important;
+  font-weight: 400;
+  font-size: 18px;
+  color: #767676;
 }
 
 .categ-ans{
@@ -17,11 +17,15 @@
 }
 
 th, td {
-    padding: 5px 0px 5px 15px !important;
+    padding: 5px 0px 5px 15px;
 }
 
 .centered {
     margin: auto;
     width: 60%;
     padding: 10px;
+}
+
+.violet{
+    color:purple;
 }

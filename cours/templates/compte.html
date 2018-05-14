@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }} - InstaCode{% endblock %}
+
+{% block content %}
+
+      <br>
+  <br>
+    <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <h4>Informations générales du compte</h4>
+        <p>Tu trouveras ici toute les informations a propos de ton compte</p>
+     <table border-collapse:"collapse" class="table" style="background-color:white">
+      <tr>
+        <td style="width:15%">Nom d'utilisateur
+          <p>{{ user.username }}</p></td>
+        <td>Le nom d'utilisateur qui sera utilisé sur la plateform instacode. Vous ne pouvez pas le modifié.</td>
+      </tr>
+      <tr>
+        <td>{% if user.profile.nom_complet != "" %}
+                Nom complet<br><input type="nom" class="form-control" name="nom_complet" id="nom" value="{{ user.profile.nom_complet }}">
+            {% else %}
+                Nom complet<br><input type="nom" class="form-control" name="nom_complet" id="nom" placeholder="Rentres ton nom complet">
+            {% endif %}
+        </td>
+        <td>Rentres ton nom complet si tu souhaites personnaliser ton profil</td>
+      </tr>
+      <tr>
+        <td>Email<br><input type="email" class="form-control" name="email" id="email" value="{{ user.email }}" required>
+        </td>
+        <td>Tu recevras des emails concernant les nouveaux cours et les exercices sur cette addresse</td>
+      </tr>
+      <tr>
+        <td>Mot de passe<br><a href="#" class="btn btn-primary">Réinitialiser votre mot de passe</a></td>
+        <td>Vas dans ta boite mail pour obtenir les informations de réinitialisation de ton mot de passe</td>
+      </tr>
+       <tr>
+        <td>Photo de profil<br>
+            {% if user.profile.image != "" %}
+                <img class="fakeimg" src="{{ user.profile.image.url }}" alt="robot" width="150" height="150" hspace="20" vspace="15"><br>
+                <input type="file" name="image" id="image"><br>
+            {% else %}
+                <p>Selectionnes une photo de profil</p><br>
+                <input type="file" name="image" id="image"><br>
+            {% endif %}
+        </td>
+        <td>Importe une photo de profil si tu souhaites personnaliser ton profil</td>
+      </tr>
+       <tr>
+        <td>{% if user.profile.pays != "" %}
+                Pays<br><input type="nom" name="pays" class="form-control" id="pays" value="{{ user.profile.pays }}">
+            {% else %}
+                Pays<br><input type="nom" name="pays" class="form-control" id="pays" placeholder="Rentres ton pays">
+            {% endif %}
+        </td>
+        <td>Rentres ton pays si tu souhaites personnaliser ton profil</td>
+      </tr>
+      <tr>
+        <td>{% if user.profile.ville != "" %}
+                Ville<br><input type="nom" name="ville" class="form-control" id="ville" value="{{ user.profile.ville }}">
+            {% else %}
+                Ville<br><input type="nom" name="ville" class="form-control" id="ville" placeholder="Rentres ta ville">
+            {% endif %}
+        </td>
+        <td>Rentres ta ville si tu souhaites personnaliser ton profil</td>
+      </tr>
+      <tr>
+        <td>{% if user.profile.a_propos != "" %}
+                A propos de moi<br><textarea name="a_propos" class="form-control" rows="5" id="comment">{{ user.profile.a_propos }}</textarea>
+            {% else %}
+                A propos de moi<br><textarea name="a_propos" class="form-control" rows="5" id="comment"></textarea>
+            {% endif %}
+
+        </td>
+        <td>Dit nous en un peu plus sur toi: tes interet, qu'est ce qui te motive a suivre les cours Instacode, ce que tu aimerais apprendre...</td>
+      </tr>
+        </table>
+          <button type="submit">Sauvegarder</button>
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h4>Information additionnelle</h4>
+            <table class="table" style="background-color:white">
+      <tr>
+        <td>Niveau de Formation<br><select name="niveau_de_formation">
+                {% if user.profile.niveau_de_formation == "" %}
+                    <option value="blank" selected> </option>
+                {% else %}
+                    <option value="blank"> </option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Doctorat" %}
+                    <option value="Doctorat" selected>Doctorat</option>
+                {% else %}
+                    <option value="Doctorat">Doctorat</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Master" %}
+                    <option value="Master" selected>Master</option>
+                {% else %}
+                    <option value="Master">Master</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Diplome de 1er cycle" %}
+                    <option value="Diplome de 1er cycle" selected>Diplome de 1er cycle</option>
+                {% else %}
+                    <option value="Diplome de 1er cycle">Diplome de 1er cycle</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Lycée" %}
+                    <option value="Lycée" selected>Lycée</option>
+                {% else %}
+                    <option value="Lycée">Lycée</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Collège" %}
+                    <option value="Collège" selected>Collège</option>
+                {% else %}
+                    <option value="Collège">Collège</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Enseignement Primaire" %}
+                    <option value="Enseignement Primaire" selected>Enseignement Primaire</option>
+                {% else %}
+                    <option value="Enseignement Primaire">Enseignement Primaire</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Education non formelle" %}
+                    <option value="Education non formelle" selected>Education non formelle</option>
+                {% else %}
+                    <option value="Education non formelle">Education non formelle</option>
+                {% endif %}
+                {% if user.profile.niveau_de_formation == "Autre Education" %}
+                    <option value="Autre Education" selected>Autre Education</option>
+                {% else %}
+                    <option value="Autre Education">Autre Education</option>
+                {% endif %}
+            </select>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Date de naissance<br>{% if user.profile.birth_date != "" %}
+                <input id="date" name="birth_date" type="date" value="{{ user.profile.birth_date }}">
+            {% else %}
+                <input id="date" name="birth_date" type="date">
+            {% endif %}
+            </td>
+      </tr>
+       <tr>
+        <td>Sexe<br><select name="gender">
+                {% if user.profile.gender == "" %}
+                    <option value="blank" selected> </option>
+                {% else %}
+                    <option value="blank"> </option>
+                {% endif %}
+                {% if user.profile.gender == "Homme" %}
+                    <option value="Homme" selected>Homme</option>
+                {% else %}
+                    <option value="Homme">Homme</option>
+                {% endif %}
+                {% if user.profile.gender == "Femme" %}
+                    <option value="Femme" selected>Femme</option>
+                {% else %}
+                    <option value="Femme">Femme</option>
+                {% endif %}
+                {% if user.profile.gender == "Autre" %}
+                    <option value="Autre" selected>Autre</option>
+                {% else %}
+                    <option value="Autre">Autre</option>
+                {% endif %}
+            </select></td>
+      </tr>
+      <tr>
+        <td>Langue<br>{% if user.profile.langue != "" %}
+                <input type="nom" name="langue" class="form-control" id="pwd" value="{{ user.profile.langue }}">
+            {% else %}
+                <input type="nom" name="langue" class="form-control" id="pwd" placeholder="Rentres ta langue">
+            {% endif %}</td>
+        <td></td>
+      </tr>
+        </table>
+        <button type="submit">Sauvegarder</button>
+          </div>
+  </div>
+  </div>
+    </form>
+{% endblock %}

@@ -1,13 +1,10 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.template.context_processors import csrf
 from .models import Forum, Topic, Post
 from .forms import TopicForm, PostForm, UpdateTopicForm
 from .settings import *
-from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic import TemplateView,FormView
-
 from django.db.models import Q
 from django.contrib.auth.models import User
 

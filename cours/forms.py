@@ -1,9 +1,10 @@
 from django import forms
-from .models import Topic, Post, ProfaneWord
-from .settings import *
+from .models import Profile
 
-class ExerciceForm(forms.ModelForm):
+
+class UpdateProfile(forms.ModelForm):
+    email = forms.EmailField()
+    image = forms.ImageField()
     class Meta():
-        model = Topic
-        fields = ['title', 'description']
-
+        model = Profile
+        fields = ['nom_complet','langue','a_propos','ville','pays','birth_date','niveau_de_formation','gender']

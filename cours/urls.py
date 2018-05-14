@@ -10,6 +10,6 @@ urlpatterns = [
     path('cours/<int:cours>/', login_required(views.CoursDetailView.as_view()), name='cours-detail'),
     url(r'^cours/(?P<cours_id>[0-9]+)/(?P<chapitre_id>[0-9]+)/', login_required(views.ChapitreDetailView.as_view()), name='chapitre-detail'),
     path('profile/<str:username>/', login_required(views.ProfileDetailView.as_view()), name='profile-detail'),
+    path('compte/', login_required(views.CompteDetailView.as_view()), name='compte'),
     url(r'^reset/(?P<chap_id>[0-9]+)/', login_required(views.reset),name='reset'),
-
 ]
