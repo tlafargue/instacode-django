@@ -68,6 +68,10 @@ GENDER = (('blank', ' '),
               ('Femme', 'Femme'),
              ('Autre', 'Autre'))
 
+GENDER = (('Homme', 'Homme'),
+              ('Femme', 'Femme'),
+             ('Autre', 'Autre'))
+
 
 
 class Profile(models.Model):
@@ -81,6 +85,7 @@ class Profile(models.Model):
     niveau_de_formation = models.CharField(max_length=60,choices=FORMATION, blank=True, null=True)
     gender = models.CharField(max_length=60,choices=GENDER, blank=True, null=True)
     solved_exercices = models.ManyToManyField(Exercice, blank=True)
+    niveau_de_formation = models.CharField(max_length=60,choices=FORMATION, blank=True, null=True)
     points = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='profile_image', blank=True)
