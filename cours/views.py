@@ -4,8 +4,10 @@ from django.views import generic
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
+from .forms import UpdateProfile
+from .models import Cours, Chapitre, Answer, Profile
+from django.core.files.storage import FileSystemStorage
 
-from .models import Cours, Chapitre, Exercice, Question, Choice, Answer
 
 
 class ChapitreDetailView(TemplateView):
@@ -30,8 +32,6 @@ class ChapitreDetailView(TemplateView):
                     else:
                         query_set.append(request.POST.get(str(question.id), False))
                         answers.append(get_object_or_404(Answer,user=user.id, choice=choice.id))
-        print(query_set)
-        print(answers)
         for i in range(len(answers)):
             a=int(answers[i].choice.id)
             b=int(query_set[i])
@@ -59,6 +59,58 @@ class ProfileDetailView(generic.DetailView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(User, username=self.kwargs['username'])
+
+
+
+
+
+
+
+
+
+
+class CompteDetailView(TemplateView):
+    template_name = 'compte.html'
+    def get(self, request):
+        form = UpdateProfile()
+        user = request.user
+        context = {'user': user, 'form':form}
+        return render(request, self.template_name, context)
+    def post(self, request):
+        user = request.user
+        form = UpdateProfile(request.POST,request.FILES)
+        print(form.is_valid())
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            nom_complet = form.cleaned_data['nom_complet']
+            langue = form.cleaned_data['langue']
+            a_propos = form.cleaned_data['a_propos']
+            ville = form.cleaned_data['ville']
+            pays = form.cleaned_data['pays']
+            birth_date = form.cleaned_data['birth_date']
+            niveau_de_formation = form.cleaned_data['niveau_de_formation']
+            gender = form.cleaned_data['gender']
+            image = form.cleaned_data['image']
+            if (image == None):
+                image = user.profile.image
+            else:
+                fs = FileSystemStorage()
+                fs.save(image.name,image)
+            User.objects.filter(id=user.id).update(email=email)
+            Profile.objects.filter(user=user.id).update(nom_complet=nom_complet,langue=langue,a_propos=a_propos,ville=ville,pays=pays,birth_date=birth_date,niveau_de_formation=niveau_de_formation,gender=gender, image=image)
+            return redirect("cours:profile-detail", user.username)
+        context = {'user': user, 'form': form}
+        return render(request, self.template_name, context)
+
+
+
+
+
+
+
+
+
+
 
 
 class LeaderboardView(generic.ListView):

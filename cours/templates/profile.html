@@ -22,7 +22,7 @@
               <img class="fakeimg" src="{{ user.profile.image.url }}" alt="robot" width="150" height="150" hspace="20" vspace="15">
             {% else %}
               <img class="fakeimg" src="{% static '/imgs/InstaCode Robot.png' %}" alt="robot" width="150" height="150" hspace="20" vspace="15">
-              <p><a style="color:purple" href="#">Ajoute une photo de profil </a></p>
+              <p><a style="color:purple" href="{% url "cours:compte" %}">Ajoute une photo de profil </a></p>
             {% endif %}
           </div>
           </td>
@@ -34,7 +34,7 @@
             <p>{% if user.profile.nom_complet != "" %}
                 {{ user.profile.nom_complet }}
             {% else %}
-                <a style="color:purple" href="#">Ajoute ton Nom</a>
+                <a style="color:purple" href="{% url "cours:compte" %}">Ajoute ton Nom</a>
             {% endif %}</p>
           </td>
         </tr>
@@ -50,7 +50,8 @@
             <span class="categ-ans"><p>{% if user.profile.pays != "" %}
                 {{ user.profile.pays }}
             {% else %}
-                <a style="color:purple" href="#">Ajoute ton Pays</a>
+                <a style="color:purple" href="{% url "cours:compte" %}">Ajoute ton Pays</a>
+
             {% endif %}</p></span>
           </td>
         </tr>
@@ -60,7 +61,7 @@
             <span class="categ-ans"><p>{% if user.profile.ville != "" %}
                 {{ user.profile.ville }}
             {% else %}
-                <a style="color:purple" href="#">Ajoute ta ville</a>
+                <a style="color:purple" href="{% url "cours:compte" %}">Ajoute ta ville</a>
             {% endif %}</p></span>
           </td>
         </tr>
@@ -71,7 +72,8 @@
         <p>{% if user.profile.a_propos != "" %}
                 {{ user.profile.a_propos }}
             {% else %}
-                <a style="color:purple" href="#">Ajoute une Description</a>
+                <a style="color:purple" href="{% url "cours:compte" %}">Ajoute une Description</a>
+
             {% endif %}</p>
         <h4>Chapitre complété</h4>
 
