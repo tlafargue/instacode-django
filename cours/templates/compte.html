@@ -16,7 +16,7 @@
         <h4>Informations générales du compte</h4>
         <p>Tu trouveras ici toute les informations a propos de ton compte</p>
      <table border-collapse:"collapse" class="table" style="background-color:white">
-      <tr>
+        <tr>
         <td style="width:15%">Nom d'utilisateur
           <p>{{ user.username }}</p></td>
         <td>Le nom d'utilisateur qui sera utilisé sur la plateform instacode. Vous ne pouvez pas le modifié.</td>
@@ -36,7 +36,7 @@
         <td>Tu recevras des emails concernant les nouveaux cours et les exercices sur cette addresse</td>
       </tr>
       <tr>
-        <td>Mot de passe<br><a href="#" class="btn btn-primary">Réinitialiser votre mot de passe</a></td>
+        <td>Mot de passe<br><a href="{% url 'password_reset' %}" class="btn btn-primary">Réinitialiser votre mot de passe</a></td>
         <td>Vas dans ta boite mail pour obtenir les informations de réinitialisation de ton mot de passe</td>
       </tr>
        <tr>
@@ -79,7 +79,7 @@
         </td>
         <td>Dit nous en un peu plus sur toi: tes interet, qu'est ce qui te motive a suivre les cours Instacode, ce que tu aimerais apprendre...</td>
       </tr>
-        </table>
+    </table>
           <button type="submit">Sauvegarder</button>
       </div>
     </div>
@@ -185,4 +185,6 @@
   </div>
   </div>
     </form>
+    {{ form.errors }}
+{{ form.non_field_errors }}
 {% endblock %}

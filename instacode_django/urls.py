@@ -18,11 +18,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.urls import path, include
+from django.conf.urls import url
+
 
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('', include('cours.urls')),
+    url('^', include('django.contrib.auth.urls')),
     path('', include('registration.urls')),
     path('forum/', include('forum.urls')),
     path('admin/', admin.site.urls, name='admin'),

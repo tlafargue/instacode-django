@@ -79,6 +79,7 @@ class CompteDetailView(TemplateView):
     def post(self, request):
         user = request.user
         form = UpdateProfile(request.POST,request.FILES)
+        print(form.is_valid())
         if form.is_valid():
             email = form.cleaned_data['email']
             nom_complet = form.cleaned_data['nom_complet']
@@ -90,16 +91,16 @@ class CompteDetailView(TemplateView):
             niveau_de_formation = form.cleaned_data['niveau_de_formation']
             gender = form.cleaned_data['gender']
             image = form.cleaned_data['image']
-            fs = FileSystemStorage()
-            fs.save(image.name,image)
-            print(image)
-            if(image==None):
+            if (image == None):
                 image = user.profile.image
+            else:
+                fs = FileSystemStorage()
+                fs.save(image.name,image)
             User.objects.filter(id=user.id).update(email=email)
             Profile.objects.filter(user=user.id).update(nom_complet=nom_complet,langue=langue,a_propos=a_propos,ville=ville,pays=pays,birth_date=birth_date,niveau_de_formation=niveau_de_formation,gender=gender, image=image)
             return redirect("cours:profile-detail", user.username)
         context = {'user': user, 'form': form}
-        return render(requesr, self.template_name, context)
+        return render(request, self.template_name, context)
 
 
 
