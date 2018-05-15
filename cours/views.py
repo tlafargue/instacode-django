@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from .forms import UpdateProfile
 from .models import Cours, Chapitre, Answer, Profile
+from django.core.files.storage import FileSystemStorage
+
 
 
 class ChapitreDetailView(TemplateView):
@@ -88,6 +90,8 @@ class CompteDetailView(TemplateView):
             niveau_de_formation = form.cleaned_data['niveau_de_formation']
             gender = form.cleaned_data['gender']
             image = form.cleaned_data['image']
+            fs = FileSystemStorage()
+            fs.save(image.name,image)
             print(image)
             if(image==None):
                 image = user.profile.image
